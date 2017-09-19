@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Suite1]">
+  <test name="First_TESTNG(failed)">
+    <classes>
+      <class name="com.ttt.tt.q">
+        <methods>
+          <include name="group3Test"/>
+          <include name="afterAllTest"/>
+          <include name="setUp"/>
+          <include name="beforeAllTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.ttt.tt.q -->
+    </classes>
+  </test> <!-- First_TESTNG(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

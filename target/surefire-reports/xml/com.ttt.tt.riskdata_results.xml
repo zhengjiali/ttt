@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="First_TESTNG"
+           tests="6"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="1.018">
+  <properties />
+  
+  
+            <testcase name="test_read1" time="0.634" classname="com.ttt.tt.riskdata" />
+                <testcase name="DBcheckEnName" time="0.001" classname="com.ttt.tt.riskdata" />
+                <testcase name="DBcreate" time="0.001" classname="com.ttt.tt.riskdata" />
+                <testcase name="testQuery301" time="0.381" classname="com.ttt.tt.riskdata" />
+                <testcase name="checkEnName" time="0.000" classname="com.ttt.tt.riskdata" />
+                <testcase name="testQuery101" time="0.001" classname="com.ttt.tt.riskdata" />
+      
+</testsuite>
