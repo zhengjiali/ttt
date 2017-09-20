@@ -12,18 +12,33 @@ import org.apache.poi.ss.usermodel.*;
 
 public class dealxls {
 	
-	public void read1() throws InvalidFormatException, IOException{
-//		InputStream inp = new FileInputStream("/Users/tcxy/Desktop/ttt/tt/src/resources/apis.xlsx");
-		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources");
+	String uri;
+	String userName;
+	String passwd;
+	
+	
+	public dealxls() throws InvalidFormatException, IOException{
+		InputStream inp = new FileInputStream("/Users/tcxy/git/ttt/ttt/src/resources/apis.xlsx");
+//		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources/apis.xlsx");
+		
 		Workbook wb = WorkbookFactory.create(inp);
 	    Sheet sheet = wb.getSheetAt(0);
-	    Row row = sheet.getRow(2);
-	    Cell cell = row.getCell(2);
-	    System.out.println(cell.getStringCellValue());
-//	    if (cell == null)
-//	        cell = row.createCell(3);
-//	    cell.setCellType(CellType.STRING);
-//	    cell.setCellValue("a test");
+	    Row row = sheet.getRow(0);
+	    Cell cell = row.getCell(1);
+	    if (cell == null)
+	        uri = null;
+	    else{
+	    	uri = cell.getStringCellValue();
+	    	System.out.println(uri);
+	    }
+	    row = sheet.getRow(1);
+	    userName = row.getCell(1).getStringCellValue();
+	    System.out.println(userName);
+	    System.out.println(row.getCell(3).getCellType());
+	    passwd = row.getCell(3).getStringCellValue();
+	    System.out.println(passwd);
+	    
+
 	}
 	
 	public void read(){
