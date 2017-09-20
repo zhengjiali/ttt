@@ -37,6 +37,7 @@ public class riskdata {
 	public void setUp() throws InvalidFormatException, IOException{
 		dealxls x = new dealxls();
 		RestAssured.baseURI=x.uri;
+		System.out.println(x.apis.toString());
 		cookie = login(x.userName,x.passwd,x.uri);
 	}
 	

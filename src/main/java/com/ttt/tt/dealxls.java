@@ -4,7 +4,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-
+import java.util.HashMap;
+import java.util.ArrayList;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
@@ -15,30 +16,39 @@ public class dealxls {
 	String uri;
 	String userName;
 	String passwd;
-	
+	ArrayList<HashMap<String, String>> apis;
 	
 	public dealxls() throws InvalidFormatException, IOException{
-		InputStream inp = new FileInputStream("/Users/tcxy/git/ttt/ttt/src/resources/apis.xlsx");
-//		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources/apis.xlsx");
+//		InputStream inp = new FileInputStream("/Users/tcxy/git/ttt/ttt/src/resources/apis.xlsx");
+		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources/apis.xlsx");
 		
 		Workbook wb = WorkbookFactory.create(inp);
 	    Sheet sheet = wb.getSheetAt(0);
+	    int lastRowNum = sheet.getLastRowNum();
+	    System.out.println("last row num:"+sheet.getLastRowNum());
 	    Row row = sheet.getRow(0);
 	    Cell cell = row.getCell(1);
-	    if (cell == null)
-	        uri = null;
-	    else{
-	    	uri = cell.getStringCellValue();
-	    	System.out.println(uri);
-	    }
+	    uri = cell.getStringCellValue();
+	    System.out.println(uri);
 	    row = sheet.getRow(1);
-	    userName = row.getCell(1).getStringCellValue();
-	    System.out.println(userName);
-	    System.out.println(row.getCell(3).getCellType());
-	    passwd = row.getCell(3).getStringCellValue();
-	    System.out.println(passwd);
-	    
-
+		userName = row.getCell(1).getStringCellValue();
+		System.out.println(userName);
+		System.out.println(row.getCell(3).getCellType());
+		passwd = row.getCell(3).getStringCellValue();
+//		System.out.println(sheet.getRow(3).getCell(0).getStringCellValue());
+		apis = new ArrayList<HashMap<String,String>>();
+		HashMap<String,String> map = new HashMap<String,String>();
+		for(int i=3;i<=lastRowNum;i++){
+		    map.put("group",sheet.getRow(i).getCell(1).getStringCellValue());
+		    map.put("path",sheet.getRow(i).getCell(3).getStringCellValue());
+		    map.put("method",sheet.getRow(i).getCell(4).getStringCellValue());
+		    if(sheet.getRow(i).getCell(5) != null)
+		    	map.put("param",sheet.getRow(i).getCell(4).getStringCellValue());
+		    else{
+		    	map.put("param", null);
+		    }
+		    apis.add(map);
+		}
 	}
 	
 	public void read(){
