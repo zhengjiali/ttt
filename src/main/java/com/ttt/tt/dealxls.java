@@ -19,8 +19,8 @@ public class dealxls {
 	ArrayList<HashMap<String, String>> apis;
 	
 	public dealxls() throws InvalidFormatException, IOException{
-//		InputStream inp = new FileInputStream("/Users/tcxy/git/ttt/ttt/src/resources/apis.xlsx");
-		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources/apis.xlsx");
+		InputStream inp = new FileInputStream("/Users/tcxy/git/ttt/ttt/src/resources/apis.xlsx");
+//		InputStream inp = new FileInputStream("/Users/zhengjiali/workspace/ttt/tt/src/resources/apis.xlsx");
 		
 		Workbook wb = WorkbookFactory.create(inp);
 	    Sheet sheet = wb.getSheetAt(0);
@@ -33,25 +33,27 @@ public class dealxls {
 	    row = sheet.getRow(1);
 		userName = row.getCell(1).getStringCellValue();
 		System.out.println(userName);
-		System.out.println(row.getCell(3).getCellType());
+//		System.out.println(row.getCell(3).getCellType());
 		passwd = row.getCell(3).getStringCellValue();
 //		System.out.println(sheet.getRow(3).getCell(0).getStringCellValue());
 		apis = new ArrayList<HashMap<String,String>>();
-		HashMap<String,String> map = new HashMap<String,String>();
 		for(int i=3;i<=lastRowNum;i++){
-		    map.put("group",sheet.getRow(i).getCell(1).getStringCellValue());
-		    map.put("path",sheet.getRow(i).getCell(3).getStringCellValue());
-		    map.put("method",sheet.getRow(i).getCell(4).getStringCellValue());
+			HashMap<String,String> t = new HashMap<String,String>();
+		    t.put("group",sheet.getRow(i).getCell(1).getStringCellValue());
+		    t.put("path",sheet.getRow(i).getCell(3).getStringCellValue());
+		    t.put("method",sheet.getRow(i).getCell(4).getStringCellValue());
 		    if(sheet.getRow(i).getCell(5) != null)
-		    	map.put("param",sheet.getRow(i).getCell(4).getStringCellValue());
+		    	t.put("param",sheet.getRow(i).getCell(4).getStringCellValue());
 		    else{
-		    	map.put("param", null);
+		    	t.put("param", null);
 		    }
-		    apis.add(map);
+		    apis.add(t);
+		    t=null;
 		}
+//		System.out.println(apis.get(0).get("group"));
 	}
 	
-	public void read(){
+	public void write(String code){
 	    // Write the output to a file
 //	    FileOutputStream fileOut = new FileOutputStream("workbook.xls");
 //	    wb.write(fileOut);

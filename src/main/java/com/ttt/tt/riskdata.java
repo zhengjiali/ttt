@@ -8,6 +8,8 @@ import static org.hamcrest.Matchers.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -31,13 +33,14 @@ import org.testng.annotations.Test;
 public class riskdata {
 	
 	String cookie;
-	
+	ArrayList<HashMap<String, String>> apis;
 	
 	@BeforeTest
 	public void setUp() throws InvalidFormatException, IOException{
 		dealxls x = new dealxls();
 		RestAssured.baseURI=x.uri;
-		System.out.println(x.apis.toString());
+		apis = x.apis;
+		System.out.println(apis.toString());
 		cookie = login(x.userName,x.passwd,x.uri);
 	}
 	
@@ -48,7 +51,11 @@ public class riskdata {
 	}
 	
 	
-	
+	@Test
+	public void test01(){
+		if (apis.get(0).get("param") == null)
+			System.out.println(RestAssured.given().cookie("_risk_user",cookie).when().get(apis.get(0).get("path")).statusCode());
+	}
 	
 	@Test(groups = {"para-data"})
 	public void testQuery301() {
