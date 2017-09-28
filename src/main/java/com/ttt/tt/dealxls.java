@@ -33,7 +33,6 @@ public class dealxls {
 	    row = sheet.getRow(1);
 		userName = row.getCell(1).getStringCellValue();
 		System.out.println(userName);
-//		System.out.println(row.getCell(3).getCellType());
 		passwd = row.getCell(3).getStringCellValue();
 //		System.out.println(sheet.getRow(3).getCell(0).getStringCellValue());
 		apis = new ArrayList<HashMap<String,String>>();
@@ -50,7 +49,6 @@ public class dealxls {
 		    apis.add(t);
 		    t=null;
 		}
-//		System.out.println(apis.get(0).get("group"));
 	}
 	
 	public void write(String code){
@@ -60,9 +58,4 @@ public class dealxls {
 //	    fileOut.close();
 	    
 	}
-	
-	public void tearDown(){
-		
-	}
-
 }
