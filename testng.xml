@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" ><suite name="Suite1">
-    <test name="First_TESTNG" preserve-order="true">
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1">
+    <test name="First_TESTNG">  
+        <parameter name="admin1" value="123456" />
         <classes>
-            <class name="com.ttt.tt.riskdata"/>
+            <class name="com.ttt.tt.IncomeParam"/>
         </classes>
     </test></suite>

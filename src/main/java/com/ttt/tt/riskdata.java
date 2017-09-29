@@ -33,6 +33,7 @@ import org.testng.annotations.Test;
 public class riskdata {
 	
 	HashMap<String,String> data;
+	String cookie;
 	
 	ArrayList<HashMap<String, String>> apis;
 	
