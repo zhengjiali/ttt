@@ -4,14 +4,20 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
+import java.util.HashMap;
+
 import org.testng.annotations.*;
 
 
 public class LoginTest {
 	
+	HashMap<String,String> data = new HashMap<String,String>();
+	
 	@BeforeClass
 	public void setUp(){
 		baseURI = "http://risk.bat.tcredit.com";
+		data.put("name", "admin1");
+		data.put("pwd", "123456");
 	}
 	
 	@Test(priority=1)
@@ -27,7 +33,7 @@ public class LoginTest {
 	@Test(priority=2)
 	public void loginNoPwd(){
 		given()
-			.formParam("userName", "admin1")
+			.formParam("userName", data.get("name"))
 		.when()
 			.post("/riskData/trics/doLogin")
 		.then()
@@ -38,8 +44,8 @@ public class LoginTest {
 	@Test(priority=3)
 	public void loginWrongPwd(){
 		given()
-			.formParam("userName","admin1")
-			.formParam("password", "1234567")
+			.formParam("userName",data.get("name"))
+			.formParam("password", data.get("pwd"))
 		.when()
 			.post("/riskData/trics/doLogin")
 		.then()
@@ -50,8 +56,8 @@ public class LoginTest {
 	@Test(priority=0)
 	public void loginRightPwd(){
 		given()
-			.formParam("userName", "admin1")
-			.formParam("password", "123456")
+			.formParam("userName", data.get("name"))
+			.formParam("password", data.get("pwd"))
 		.when()
 			.post("/riskData/trics/doLogin")
 		.then()

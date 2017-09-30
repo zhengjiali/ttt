@@ -51,6 +51,8 @@ public class db {
 					result.put("id", rs.getInt("id"));
 				if(isExistColumn(rs,"is_deleted"))
 					result.put("isdeleted", rs.getInt("is_deleted"));
+				if(isExistColumn(rs,"status"))
+					result.put("status", rs.getInt("status"));
 			}			
 			rs.close();
 			con.close();
