@@ -51,10 +51,7 @@ public class db {
 					result.put("id", rs.getInt("id"));
 				if(isExistColumn(rs,"is_deleted"))
 					result.put("isdeleted", rs.getInt("is_deleted"));
-			}
-//			System.out.println("----------------------");
-//			System.out.println("执行结果如下所示：");
-//			System.out.println("----------------------");			
+			}			
 			rs.close();
 			con.close();
 		}catch(ClassNotFoundException e){

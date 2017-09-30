@@ -335,7 +335,11 @@ public class IncomeParam {
 				.statusCode(200)
 				.body("status",equalTo(0))
 				.body("message", equalTo("删除成功"));
+			String sql = "select * from risk_data_param where id = '"+ data.get("CreateParamId") +"'";
+			resDb = db.searchDb(sql);
+			Assert.assertEquals(resDb.get("isdeleted").intValue(),-1);
 		}
+		
 		
 		
 		

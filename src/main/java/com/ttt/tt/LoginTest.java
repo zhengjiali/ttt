@@ -14,7 +14,7 @@ public class LoginTest {
 		baseURI = "http://risk.bat.tcredit.com";
 	}
 	
-	@Test
+	@Test(priority=1)
 	public void loginNoPara(){
 		given()
 		.when()
@@ -24,7 +24,7 @@ public class LoginTest {
 			.body("status", equalTo(-1));
 	}
 	
-	@Test
+	@Test(priority=2)
 	public void loginNoPwd(){
 		given()
 			.formParam("userName", "admin1")
@@ -35,7 +35,7 @@ public class LoginTest {
 			.body("status", equalTo(-1));
 	}
 	
-	@Test
+	@Test(priority=3)
 	public void loginWrongPwd(){
 		given()
 			.formParam("userName","admin1")
@@ -47,7 +47,7 @@ public class LoginTest {
 			.body("status", equalTo(-1));	
 	}
 	
-	@Test
+	@Test(priority=0)
 	public void loginRightPwd(){
 		given()
 			.formParam("userName", "admin1")
