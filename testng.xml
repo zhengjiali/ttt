@@ -3,7 +3,6 @@
     <test name="First_TESTNG" preserve-order="true">  
         <parameter name="admin1" value="123456" />
         <classes>
-        	<class name="com.ttt.tt.LoginTest"/>
-            <class name="com.ttt.tt.IncomeParam"/>
+            <class name="com.ttt.tt.test"/>
         </classes>
     </test></suite>
