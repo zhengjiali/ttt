@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Suite1">
-    <test name="First_TESTNG" preserve-order="true">  
+    <!-- <test name="test" preserve-order="true">  
         <parameter name="admin1" value="123456" />
+        <groups>
+        	<dependencies>
+        		<group name="Test3" depends-on="Test2"/>
+        		<group name="Test2" depends-on="Test1"/>
+        	</dependencies>
+        </groups>
         <classes>
             <class name="com.ttt.tt.test"/>
         </classes>
-    </test></suite>
+    </test> -->
+    
+    <test name="IncomeParameter" preserve-order="true">
+    	<groups>
+    		<dependencies>
+    			<group name="Delete" depends-on="Reset" />
+    			<group name="Reset" depends-on="Submit" />
+    			<group name="Submit" depends-on="Create" />
+    			<group name="Create" depends-on="Search" />
+    		</dependencies>
+    	</groups>
+    	<classes>
+    		<class name="com.ttt.tt.IncomeParam" />
+    	</classes>
+    </test>
+    
+</suite>

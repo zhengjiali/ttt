@@ -15,30 +15,39 @@ public class test {
 		log("BeforeSuite....");
 	}
 	
-	@Test(priority=10)
+	@Test(groups="Test1")
 	public class Zookkk{
 		
-		@Test(priority=1)
+		@Test
 		public void paraCreate(){
 			log("Test--->Zookkk");
 		}
 	}
 	
-	@Test(priority=1)
+	@Test(groups="Test2")
 	public class TelePara{
 		
-		@Test(priority=2)
+		@Test(priority=0)
 		public void para1Create(){
-			log("Test--->TelePara");
+			log("Test--->TelePara2");
+		}
+		@Test(priority=1)
+		public void para0Create(){
+			log("Test--->TelePara0");
 		}
 	}
 	
-	@Test(priority=2)
+	@Test(groups="Test3")
 	public class AdminPara{
 		
-		@Test(priority=3)
-		public void para2Create(){
-			log("Test--->AdminPara");
+		@Test(priority=2)
+		public void para0Create(){
+			log("Test--->AdminPara2");
+		}
+		
+		@Test(priority=0)
+		public void para1Create(){
+			log("Test--->AdminPara1");
 		}
 	}
 
